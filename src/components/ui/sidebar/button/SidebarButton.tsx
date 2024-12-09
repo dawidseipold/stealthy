@@ -1,4 +1,4 @@
-import { RequiredParentComponent } from "../../../../utils/types/component";
+import { RequiredParentComponent } from "src/utils/types/component";
 
 interface SidebarButtonProps {
 }

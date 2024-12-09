@@ -1,18 +1,22 @@
-import { createSignal, For } from "solid-js";
+import { Component, For } from "solid-js";
 import { SidebarButton } from "./button/SidebarButton";
+import { ConversationsStore } from "src/utils/stores/conversations";
 
-export function Sidebar() {
-  const [chats, _] = createSignal(["Chat 1", "Chat 2", "Chat 3"]);
+interface SidebarProps {
+  conversations: ConversationsStore['conversations']
+}
+
+export const Sidebar: Component<SidebarProps> = (props) => {
 
   return (
     <aside class="bg-[#1B1B18] flex flex-col gap-y-8 w-64 p-4">
       <SidebarButton>join chat</SidebarButton>
 
       <nav class="flex flex-col gap-y-4">
-        <For each={chats()}>
+        <For each={props.conversations}>
           {(item, _) => (
             <SidebarButton>
-              {item}
+              {item.id}
             </SidebarButton>
           )}
         </For>
