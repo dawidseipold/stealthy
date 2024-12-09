@@ -1,5 +1,16 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
-import App from "./App";
+import { HashRouter, Route } from "@solidjs/router";
+import "src/styles/global.css";
 
-render(() => <App />, document.getElementById("root") as HTMLElement);
+import { Home } from "./routes/Home";
+
+
+render(
+  () => (
+    <HashRouter>
+      <Route path="/" component={Home} />
+    </HashRouter>
+  ),
+  document.getElementById("root") as HTMLElement
+);
