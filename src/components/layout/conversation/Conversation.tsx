@@ -1,17 +1,25 @@
-import { Component } from "solid-js"
+import { Component, For } from "solid-js"
 import { Message } from "src/components/ui/message/Message"
+import { activeConversationStore } from "src/utils/stores/conversations"
 
 interface ConversationProps {
 
 }
 
 export const Conversation: Component<ConversationProps> = () => {
+  const activeConversation = () => activeConversationStore.activeConversation;
+
+  if (activeConversation === null) {
+    return (
+      <div>Join a conversation first</div>
+    )
+  }
 
   return (
     <div>
       <header>
         <div>
-          <strong>Your conversation</strong>
+          <strong>{activeConversation()?.name}</strong>
           <span>45 members, 24 online</span>
         </div>
 
@@ -21,8 +29,11 @@ export const Conversation: Component<ConversationProps> = () => {
       </header>
 
       <main>
-        <Message text="Hi guys what is up?" sender={{ username: 'bolton12' }} />
-        <Message text="Not much... What about you?" sender={{ username: 'quintine2' }} />
+        <For each={activeConversation()?.messages}>
+          {(message, _) => (
+            <Message message={message} />
+          )}
+        </For>
       </main>
 
       <footer>
