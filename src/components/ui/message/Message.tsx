@@ -1,27 +1,22 @@
 import { Component } from "solid-js"
 import { cn } from 'src/utils/helpers/cn'
-import { User, userStore } from "src/utils/stores/user";
+import { type Message as MessageType } from "src/utils/stores/conversations";
+import { userStore } from "src/utils/stores/user";
 
 
-type Attachment = {
-  type: "image" | "video" | "file";
-  name: string
-}
+
 
 interface MessageProps {
-  text: string;
-  sender: User;
-  attachments?: Attachment[]
+  message: MessageType
 }
 
 export const Message: Component<MessageProps> = (props) => {
-  const username = userStore.username;
-  const text = () => props.text;
+  const username = () => userStore.username;
 
-  const isSender = username === props.sender.username;
+  const isSender = username() === props.message.sender;
 
   return (
-    <div class={cn("p-2 rounded-2xl font-medium text-white", isSender ? "bg-blue-400" : "bg-slate-400")}>{text()}</div>
+    <div class={cn("p-2 rounded-2xl font-medium text-white", isSender ? "bg-blue-400" : "bg-slate-400")}>{props.message.content.text}</div>
   )
 }
 
