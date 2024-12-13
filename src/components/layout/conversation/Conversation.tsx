@@ -1,13 +1,13 @@
 import { Component, For } from "solid-js"
 import { Message } from "src/components/ui/message/Message"
-import { activeConversationStore } from "src/utils/stores/conversations"
+import { activeChatStore } from "src/utils/stores/chats"
 
 interface ConversationProps {
 
 }
 
 export const Conversation: Component<ConversationProps> = () => {
-  const activeConversation = () => activeConversationStore.activeConversation;
+  const activeConversation = () => activeChatStore.activeChat;
 
   if (activeConversation === null) {
     return (
