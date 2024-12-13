@@ -16,9 +16,15 @@ export interface Message {
 }
 
 export interface Chat {
-  id: string,
+  id: string;
   name: string;
   messages: Message[];
+}
+
+export interface ChatPreview {
+  id: string;
+  name: string;
+  lastMessage: Message
 }
 
 export interface ChatStore {
