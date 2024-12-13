@@ -1,10 +1,10 @@
 import { A } from "@solidjs/router";
 import { Component, For, Match, Resource, Show, Switch } from "solid-js"
 import ChatPreview from "src/components/ui/chat-preview/ChatPreview";
-import { Chat, setActiveChatStore } from "src/utils/stores/chats"
+import { type ChatPreview as ChatPreviewType } from "src/utils/stores/chats"
 
 interface ChatsSidebarProps {
-  chats: Resource<Chat[]>
+  chats: Resource<ChatPreviewType[]>
 }
 
 const ChatsSidebar: Component<ChatsSidebarProps> = (props) => {
@@ -21,7 +21,7 @@ const ChatsSidebar: Component<ChatsSidebarProps> = (props) => {
           <nav class="flex flex-col gap-y-2">
             <For each={chats()}>
               {(chat) => (
-                <A href={`/chats/${chat.id}`} onClick={() => setActiveChatStore({ activeChat: chat })}>
+                <A href={`/chats/${chat.id}`}>
                   <ChatPreview chat={chat} />
                 </A>
               )}

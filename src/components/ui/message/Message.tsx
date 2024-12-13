@@ -1,10 +1,7 @@
 import { Component } from "solid-js"
 import { cn } from 'src/utils/helpers/cn'
-import { type Message as MessageType } from "src/utils/stores/conversations";
+import { type Message as MessageType } from "src/utils/stores/chats";
 import { userStore } from "src/utils/stores/user";
-
-
-
 
 interface MessageProps {
   message: MessageType

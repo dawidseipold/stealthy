@@ -1,8 +1,8 @@
 import { Component } from "solid-js"
-import { type Chat } from "src/utils/stores/chats"
+import { type ChatPreview } from "src/utils/stores/chats"
 
 interface ChatPreviewProps {
-  chat: Chat
+  chat: ChatPreview
 }
 
 const ChatPreview: Component<ChatPreviewProps> = (props) => {
@@ -18,7 +18,7 @@ const ChatPreview: Component<ChatPreviewProps> = (props) => {
         </strong>
 
         <span class="truncate text-slate-500">
-          {chat().messages[0].content.text}
+          {chat().lastMessage.content.text}
         </span>
       </div>
     </div>
