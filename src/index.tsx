@@ -1,15 +1,21 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
-import { HashRouter, Route } from "@solidjs/router";
 import "src/styles/global.css";
-
-import { Home } from "./routes/Home";
+import { HomeRoute, ChatRoute } from 'src/routes'
+import { ChatsLayout } from 'src/layouts'
+import { HashRouter, Route } from "@solidjs/router";
+import App from "./App";
 
 
 render(
   () => (
-    <HashRouter>
-      <Route path="/" component={Home} />
+    <HashRouter root={App}>
+      <Route path="/" component={HomeRoute} />
+
+      <Route path="/chats" component={ChatsLayout}>
+        <Route path="/" component={ChatRoute} />
+        <Route path="/:id" component={ChatRoute} />
+      </Route>
     </HashRouter>
   ),
   document.getElementById("root") as HTMLElement
