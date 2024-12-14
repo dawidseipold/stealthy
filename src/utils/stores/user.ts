@@ -10,5 +10,5 @@ export interface UserStore extends User { };
 
 
 export const [userStore, setUserStore] = createStore<UserStore>({
-  username: "bolton12"
+  username: "person_1"
 });
