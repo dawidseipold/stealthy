@@ -17,7 +17,7 @@ async fn main() {
         }
     };
 
-    if let Err(err) = router::setup_server().await {
+    if let Err(err) = router::setup_server(database_layer).await {
         eprintln!("Failed to setup the server: {}", err);
         std::process::exit(1);
     }
