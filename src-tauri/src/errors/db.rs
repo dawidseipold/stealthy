@@ -6,8 +6,8 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum DatabaseError {
-    #[error("database connection error")]
-    ConnectionError,
+    // #[error("database connection error")]
+    // ConnectionError,
     #[error("database query failed")]
     QueryError,
 }
@@ -15,7 +15,7 @@ pub enum DatabaseError {
 impl IntoResponse for DatabaseError {
     fn into_response(self) -> Response {
         let status = match self {
-            DatabaseError::ConnectionError => StatusCode::INTERNAL_SERVER_ERROR,
+            // DatabaseError::ConnectionError => StatusCode::INTERNAL_SERVER_ERROR,
             DatabaseError::QueryError => StatusCode::BAD_REQUEST,
         };
 
