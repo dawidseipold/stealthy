@@ -1,9 +1,6 @@
 use axum::{extract::Request, response::Response};
 use futures_util::future::BoxFuture;
-use std::{
-    sync::LazyLock,
-    task::{Context, Poll},
-};
+use std::task::{Context, Poll};
 use surrealdb::{
     engine::remote::ws::{Client, Ws},
     opt::auth::Root,
@@ -67,7 +64,7 @@ impl DatabaseLayer {
 }
 
 #[derive(Clone)]
-struct DatabaseMiddleware<S> {
+pub struct DatabaseMiddleware<S> {
     inner: S,
 }
 
